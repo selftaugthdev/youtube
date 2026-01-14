@@ -57,9 +57,55 @@ export default function FreeStuffPage() {
           </div>
         </section>
 
+        {/* Featured: Email Course */}
+        <section className="py-12 bg-white border-b">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 md:p-12 text-white">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <span className="inline-block bg-yellow-500 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
+                    FREE EMAIL COURSE
+                  </span>
+                  <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                    The 40+ Creator&apos;s Quick-Start Course
+                  </h2>
+                  <p className="text-gray-300 mb-6">
+                    Go from zero to your first published video in just 7 days. Get one simple,
+                    actionable lesson delivered to your inbox each day.
+                  </p>
+                  <Link
+                    href="/quick-start-course"
+                    className="inline-block bg-yellow-500 hover:bg-yellow-600 text-yellow-900 font-bold px-6 py-3 rounded-lg transition-colors"
+                  >
+                    Get The Free Course &rarr;
+                  </Link>
+                </div>
+                <div className="hidden md:block">
+                  <div className="bg-slate-700/50 rounded-xl p-6 space-y-3">
+                    <div className="flex items-center gap-3">
+                      <span className="w-8 h-8 bg-yellow-500 text-yellow-900 rounded-full flex items-center justify-center font-bold text-sm">1</span>
+                      <span className="text-sm">Find Your Perfect Niche</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="w-8 h-8 bg-yellow-500 text-yellow-900 rounded-full flex items-center justify-center font-bold text-sm">2</span>
+                      <span className="text-sm">Set Up Your Channel Right</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="w-8 h-8 bg-yellow-500 text-yellow-900 rounded-full flex items-center justify-center font-bold text-sm">3</span>
+                      <span className="text-sm">Gear You Actually Need</span>
+                    </div>
+                    <div className="text-center text-gray-400 text-sm">+ 4 more days...</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Resources Grid */}
         <section className="py-16 md:py-24 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-gray-900 text-center mb-12">More Free Resources</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {freeResources.map((resource, index) => (
                 <div
