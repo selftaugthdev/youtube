@@ -24,10 +24,11 @@ const freeResources = [
     comingSoon: false,
   },
   {
-    title: 'Video Ideas Worksheet',
-    description: 'Stuck on what to create? This worksheet helps you brainstorm 50+ video ideas for your niche in under an hour.',
+    title: '50 Video Ideas for 40+ Creators',
+    description: 'Plug-and-play video ideas organized by category. Introductions, tutorials, reviews, Q&A starters, and more. Never wonder "what should I make?" again.',
     icon: '💡',
     comingSoon: false,
+    link: '/video-ideas',
   },
   {
     title: 'First 1000 Subscribers Roadmap',
