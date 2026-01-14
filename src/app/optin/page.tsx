@@ -134,19 +134,6 @@ export default function OptinPage() {
             ))}
           </div>
 
-          {/* Second CTA */}
-          <div className="mt-8 text-center">
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="inline-block bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-8 rounded-lg transition-colors"
-            >
-              Start The Free Course &rarr;
-            </a>
-          </div>
         </div>
       </section>
 
