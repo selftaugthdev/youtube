@@ -4,10 +4,11 @@ import Link from 'next/link';
 
 const freeResources = [
   {
-    title: 'New YouTube Creator Guide',
-    description: 'A comprehensive guide to starting your YouTube channel from scratch. Learn the basics of setting up your channel, creating your first video, and understanding YouTube\'s algorithm.',
-    icon: '📖',
+    title: 'The 40+ Creator\'s Quick-Start Course',
+    description: 'A free 7-day email course that takes you from zero to your first published video. One simple, actionable lesson each day — designed for creators over 40.',
+    icon: '📧',
     comingSoon: false,
+    link: '/optin',
   },
   {
     title: 'YouTube Thumbnail Templates',
@@ -60,41 +61,41 @@ export default function FreeStuffPage() {
         {/* Featured: Email Course */}
         <section className="py-12 bg-white border-b">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 md:p-12 text-white">
+            <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 md:p-12 text-white">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
-                  <span className="inline-block bg-yellow-500 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
+                  <span className="inline-block bg-white/20 backdrop-blur text-white text-xs font-bold px-3 py-1 rounded-full mb-4">
                     FREE EMAIL COURSE
                   </span>
                   <h2 className="text-2xl md:text-3xl font-bold mb-4">
                     The 40+ Creator&apos;s Quick-Start Course
                   </h2>
-                  <p className="text-gray-300 mb-6">
+                  <p className="text-blue-100 mb-6">
                     Go from zero to your first published video in just 7 days. Get one simple,
                     actionable lesson delivered to your inbox each day.
                   </p>
                   <Link
-                    href="/quick-start-course"
-                    className="inline-block bg-yellow-500 hover:bg-yellow-600 text-yellow-900 font-bold px-6 py-3 rounded-lg transition-colors"
+                    href="/optin"
+                    className="inline-block bg-white hover:bg-gray-100 text-blue-700 font-bold px-6 py-3 rounded-lg transition-colors"
                   >
                     Get The Free Course &rarr;
                   </Link>
                 </div>
                 <div className="hidden md:block">
-                  <div className="bg-slate-700/50 rounded-xl p-6 space-y-3">
+                  <div className="bg-white/10 backdrop-blur rounded-xl p-6 space-y-3">
                     <div className="flex items-center gap-3">
-                      <span className="w-8 h-8 bg-yellow-500 text-yellow-900 rounded-full flex items-center justify-center font-bold text-sm">1</span>
+                      <span className="w-8 h-8 bg-white text-blue-700 rounded-full flex items-center justify-center font-bold text-sm">1</span>
                       <span className="text-sm">Find Your Perfect Niche</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="w-8 h-8 bg-yellow-500 text-yellow-900 rounded-full flex items-center justify-center font-bold text-sm">2</span>
+                      <span className="w-8 h-8 bg-white text-blue-700 rounded-full flex items-center justify-center font-bold text-sm">2</span>
                       <span className="text-sm">Set Up Your Channel Right</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="w-8 h-8 bg-yellow-500 text-yellow-900 rounded-full flex items-center justify-center font-bold text-sm">3</span>
+                      <span className="w-8 h-8 bg-white text-blue-700 rounded-full flex items-center justify-center font-bold text-sm">3</span>
                       <span className="text-sm">Gear You Actually Need</span>
                     </div>
-                    <div className="text-center text-gray-400 text-sm">+ 4 more days...</div>
+                    <div className="text-center text-blue-200 text-sm">+ 4 more days...</div>
                   </div>
                 </div>
               </div>
@@ -123,9 +124,18 @@ export default function FreeStuffPage() {
                   </h3>
                   <p className="text-gray-600 mb-4">{resource.description}</p>
                   {!resource.comingSoon ? (
-                    <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded text-sm transition-colors">
-                      Download Free
-                    </button>
+                    resource.link ? (
+                      <Link
+                        href={resource.link}
+                        className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded text-sm transition-colors"
+                      >
+                        Get It Free
+                      </Link>
+                    ) : (
+                      <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded text-sm transition-colors">
+                        Download Free
+                      </button>
+                    )
                   ) : (
                     <button
                       disabled
