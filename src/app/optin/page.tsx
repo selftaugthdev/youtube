@@ -3,6 +3,16 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
+const dailyLessons = [
+  { day: 1, title: "Your YouTube 'Why' (This Determines Everything)" },
+  { day: 2, title: "Finding Your Topic (Without Overthinking It)" },
+  { day: 3, title: "Your First 5 Videos (Mapped Out)" },
+  { day: 4, title: "Setting Up Your Channel (The Simple Way)" },
+  { day: 5, title: "Equipment: You Already Have What You Need" },
+  { day: 6, title: "Lights, Camera... Confidence" },
+  { day: 7, title: "Hit Publish (And What Happens Next)" },
+];
+
 export default function OptinPage() {
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -14,9 +24,12 @@ export default function OptinPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 to-blue-800 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-blue-500 via-blue-600 to-blue-800 flex flex-col">
+      {/* Decorative gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 via-transparent to-blue-400/30 pointer-events-none"></div>
+
       {/* Simple Header */}
-      <header className="py-6">
+      <header className="relative py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Link href="/" className="text-white/80 hover:text-white text-sm font-medium">
             Thierry Starts YouTube
@@ -25,11 +38,11 @@ export default function OptinPage() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow flex items-center justify-center px-4 py-12">
-        <div className="w-full max-w-md">
+      <main className="relative flex-grow flex items-center justify-center px-4 py-8">
+        <div className="w-full max-w-lg">
           {/* Badge */}
           <div className="text-center mb-6">
-            <span className="inline-block bg-white/20 backdrop-blur text-white text-sm font-bold px-4 py-1 rounded-full">
+            <span className="inline-block bg-white/20 backdrop-blur text-white text-sm font-bold px-4 py-2 rounded-full">
               FREE 7-DAY EMAIL COURSE
             </span>
           </div>
@@ -87,12 +100,12 @@ export default function OptinPage() {
             </p>
           </div>
 
-          {/* What you'll learn */}
+          {/* What you'll learn preview */}
           <div className="mt-8 text-center">
-            <p className="text-blue-100 text-sm mb-4">In 7 days, you&apos;ll learn:</p>
-            <div className="flex flex-wrap justify-center gap-2">
-              {['Find your niche', 'Set up your channel', 'Record your first video', 'Edit like a pro', 'Upload & optimize'].map((item, i) => (
-                <span key={i} className="bg-white/10 text-white text-xs px-3 py-1 rounded-full">
+            <p className="text-white font-medium mb-4">Here&apos;s what you&apos;ll learn:</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {['Find your why', 'Choose your topic', 'Plan 5 videos', 'Set up your channel', 'Use gear you have', 'Build confidence', 'Hit publish'].map((item, i) => (
+                <span key={i} className="bg-white/20 backdrop-blur text-white text-sm px-4 py-2 rounded-full font-medium">
                   {item}
                 </span>
               ))}
@@ -101,8 +114,44 @@ export default function OptinPage() {
         </div>
       </main>
 
+      {/* 7-Day Breakdown Section */}
+      <section className="relative bg-white/10 backdrop-blur-sm py-12 mt-8">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-white text-center mb-8">
+            Your 7-Day Journey
+          </h2>
+          <div className="space-y-3">
+            {dailyLessons.map((lesson) => (
+              <div
+                key={lesson.day}
+                className="bg-white/10 backdrop-blur rounded-xl p-4 flex items-center gap-4"
+              >
+                <div className="flex-shrink-0 w-10 h-10 bg-white text-blue-600 rounded-full flex items-center justify-center font-bold">
+                  {lesson.day}
+                </div>
+                <p className="text-white font-medium">{lesson.title}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Second CTA */}
+          <div className="mt-8 text-center">
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="inline-block bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-8 rounded-lg transition-colors"
+            >
+              Start The Free Course &rarr;
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Simple Footer */}
-      <footer className="py-6">
+      <footer className="relative py-6 bg-blue-900/30">
         <div className="text-center text-blue-200 text-sm">
           &copy; {new Date().getFullYear()} Thierry Starts YouTube
         </div>
