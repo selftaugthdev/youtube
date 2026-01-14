@@ -37,10 +37,11 @@ const freeResources = [
     comingSoon: true,
   },
   {
-    title: 'Video Script Template',
-    description: 'A fill-in-the-blank script template that helps you structure engaging videos that keep viewers watching.',
+    title: 'Script Template Bundle',
+    description: '3-page PDF with fill-in-the-blank video scripts. Includes templates for intro videos, tutorials, and story/experience videos.',
     icon: '📝',
-    comingSoon: true,
+    comingSoon: false,
+    link: '/scripts',
   },
 ];
 
