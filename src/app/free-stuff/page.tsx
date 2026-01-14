@@ -11,6 +11,13 @@ const freeResources = [
     link: '/optin',
   },
   {
+    title: 'First Video Checklist',
+    description: 'A one-page PDF checklist with 26 actionable items. Covers pre-recording, recording day, post-production, and upload optimization.',
+    icon: '✅',
+    comingSoon: false,
+    link: '/checklist',
+  },
+  {
     title: 'YouTube Thumbnail Templates',
     description: 'Free Canva templates to create eye-catching thumbnails that get clicks. Includes 10 customizable designs perfect for beginners.',
     icon: '🎨',
@@ -20,12 +27,6 @@ const freeResources = [
     title: 'Video Ideas Worksheet',
     description: 'Stuck on what to create? This worksheet helps you brainstorm 50+ video ideas for your niche in under an hour.',
     icon: '💡',
-    comingSoon: false,
-  },
-  {
-    title: 'YouTube SEO Checklist',
-    description: 'A simple checklist to optimize every video you upload. Cover all the basics to help your videos get discovered.',
-    icon: '✅',
     comingSoon: false,
   },
   {
