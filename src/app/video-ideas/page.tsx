@@ -7,37 +7,31 @@ const ideaCategories = [
   {
     title: 'Introduction Videos',
     ideas: 5,
-    icon: '👋',
     description: 'Perfect first videos to introduce yourself and your channel',
   },
   {
     title: 'Teaching Your Skill',
     ideas: 10,
-    icon: '🎓',
     description: 'Share your expertise with how-to and tutorial content',
   },
   {
     title: 'Your Experience & Wisdom',
     ideas: 10,
-    icon: '💡',
     description: 'Lessons learned, stories, and insights from your journey',
   },
   {
     title: 'Product & Tool Reviews',
     ideas: 10,
-    icon: '⭐',
     description: 'Review products and tools your audience cares about',
   },
   {
     title: 'Common Mistakes',
     ideas: 10,
-    icon: '⚠️',
     description: 'Help others avoid the mistakes you\'ve seen (or made)',
   },
   {
     title: 'Q&A Starters',
     ideas: 5,
-    icon: '❓',
     description: 'Answer questions your audience is already asking',
   },
 ];
@@ -45,177 +39,383 @@ const ideaCategories = [
 export default function VideoIdeasOptinPage() {
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
+  const [isHovered, setIsHovered] = useState<number | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Placeholder - will be replaced with Kit.com form
     alert('This is a placeholder form. Kit.com integration coming soon!');
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 flex flex-col">
-      {/* Decorative gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-orange-900/40 via-transparent to-yellow-400/20 pointer-events-none"></div>
+    <>
+      {/* Google Fonts */}
+      <style jsx global>{`
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap');
 
-      {/* Simple Header */}
-      <header className="relative py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Link href="/" className="text-white/80 hover:text-white text-sm font-medium">
-            Thierry Starts YouTube
-          </Link>
-        </div>
-      </header>
+        .font-display {
+          font-family: 'Fraunces', Georgia, serif;
+        }
+        .font-body {
+          font-family: 'Outfit', system-ui, sans-serif;
+        }
 
-      {/* Main Content */}
-      <main className="relative flex-grow flex items-center justify-center px-4 py-8">
-        <div className="w-full max-w-lg">
-          {/* Badge */}
-          <div className="text-center mb-6">
-            <span className="inline-block bg-white/20 backdrop-blur text-white text-sm font-bold px-4 py-2 rounded-full">
-              FREE DOWNLOADABLE PDF
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(24px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-8px) rotate(2deg); }
+        }
+
+        .animate-fade-in-up {
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-scale-in {
+          animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+
+        .grain-overlay::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+          opacity: 0.03;
+          pointer-events: none;
+        }
+      `}</style>
+
+      <div className="font-body min-h-screen bg-[#FDF8F3] relative grain-overlay">
+        {/* Decorative shapes */}
+        <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-[#C45D3E]/5 blur-2xl"></div>
+        <div className="absolute top-40 right-20 w-48 h-48 rounded-full bg-[#2D4A3E]/5 blur-3xl"></div>
+        <div className="absolute bottom-40 left-1/4 w-64 h-64 rounded-full bg-[#E8B4A0]/20 blur-3xl"></div>
+
+        {/* Header */}
+        <header className="relative py-8">
+          <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <Link
+              href="/"
+              className="text-[#6B5B4F] hover:text-[#C45D3E] text-sm font-medium tracking-wide transition-colors duration-300"
+            >
+              ← Back to home
+            </Link>
+            <span className="text-[#C45D3E]/60 text-xs tracking-[0.2em] uppercase font-medium">
+              Free Resource
             </span>
           </div>
+        </header>
 
-          {/* Headline */}
-          <h1 className="text-3xl md:text-4xl font-bold text-white text-center mb-3 leading-tight">
-            50 Video Ideas for<br />40+ Creators
-          </h1>
+        {/* Hero Section */}
+        <main className="relative">
+          <div className="max-w-6xl mx-auto px-6 pt-8 pb-20">
+            <div className="grid lg:grid-cols-2 gap-16 items-start">
 
-          {/* Subheadline */}
-          <p className="text-xl text-orange-100 text-center mb-4">
-            Never stare at a blank screen again
-          </p>
+              {/* Left Column - Content */}
+              <div className="lg:pr-8">
+                {/* Large decorative number */}
+                <div className="opacity-0 animate-fade-in-up">
+                  <span
+                    className="font-display text-[12rem] md:text-[16rem] font-bold leading-none text-[#C45D3E]/10 select-none block -mb-16 md:-mb-24"
+                    style={{ fontVariationSettings: "'opsz' 144" }}
+                  >
+                    50
+                  </span>
+                </div>
 
-          {/* Description */}
-          <p className="text-orange-100/90 text-center mb-8 max-w-md mx-auto">
-            Plug-and-play video ideas organized by category. Just pick one, add your unique spin,
-            and start recording. Perfect for when you don&apos;t know what to make next.
-          </p>
+                {/* Badge */}
+                <div className="opacity-0 animate-fade-in-up stagger-1">
+                  <span className="inline-flex items-center gap-2 text-[#2D4A3E] text-xs tracking-[0.15em] uppercase font-semibold mb-6">
+                    <span className="w-8 h-px bg-[#2D4A3E]"></span>
+                    Free PDF Download
+                  </span>
+                </div>
 
-          {/* Form Card */}
-          <div className="bg-white rounded-2xl shadow-2xl p-8">
-            <div className="flex justify-center mb-4">
-              <div className="bg-orange-100 rounded-lg p-3">
-                <svg className="w-8 h-8 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
+                {/* Headline */}
+                <h1 className="opacity-0 animate-fade-in-up stagger-2">
+                  <span
+                    className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-[#1F1F1F] leading-[1.1] block"
+                    style={{ fontVariationSettings: "'opsz' 72" }}
+                  >
+                    Video Ideas for
+                  </span>
+                  <span
+                    className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] block mt-1"
+                    style={{ fontVariationSettings: "'opsz' 72" }}
+                  >
+                    <span className="text-[#C45D3E]">40+</span> Creators
+                  </span>
+                </h1>
+
+                {/* Subheadline */}
+                <p className="opacity-0 animate-fade-in-up stagger-3 text-xl md:text-2xl text-[#6B5B4F] mt-6 font-light leading-relaxed max-w-lg">
+                  Never stare at a blank screen again. Plug-and-play ideas organized by category.
+                </p>
+
+                {/* Value proposition */}
+                <div className="opacity-0 animate-fade-in-up stagger-4 mt-10 flex items-start gap-4">
+                  <div className="w-1 h-16 bg-gradient-to-b from-[#C45D3E] to-[#E8B4A0] rounded-full flex-shrink-0"></div>
+                  <p className="text-[#6B5B4F] leading-relaxed">
+                    These 50 ideas are specifically crafted for creators over 40 who have
+                    experience and wisdom to share but don&apos;t always know how to package it.
+                  </p>
+                </div>
+
+                {/* Stats */}
+                <div className="opacity-0 animate-fade-in-up stagger-5 mt-12 flex gap-12">
+                  <div>
+                    <span className="font-display text-3xl font-semibold text-[#1F1F1F]">6</span>
+                    <p className="text-[#6B5B4F] text-sm mt-1">Categories</p>
+                  </div>
+                  <div>
+                    <span className="font-display text-3xl font-semibold text-[#1F1F1F]">50</span>
+                    <p className="text-[#6B5B4F] text-sm mt-1">Video Ideas</p>
+                  </div>
+                  <div>
+                    <span className="font-display text-3xl font-semibold text-[#1F1F1F]">~1yr</span>
+                    <p className="text-[#6B5B4F] text-sm mt-1">Of Content</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column - Form Card */}
+              <div className="opacity-0 animate-scale-in stagger-3 lg:sticky lg:top-8">
+                <div className="bg-white rounded-3xl shadow-[0_4px_40px_rgba(0,0,0,0.06)] p-8 md:p-10 border border-[#E8E4DF]">
+                  {/* Decorative element */}
+                  <div className="flex justify-center mb-6">
+                    <div className="animate-float w-16 h-16 rounded-2xl bg-gradient-to-br from-[#C45D3E] to-[#E87B5E] flex items-center justify-center shadow-lg shadow-[#C45D3E]/20">
+                      <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <h2 className="font-display text-2xl font-semibold text-center text-[#1F1F1F] mb-2">
+                    Get Your Free Copy
+                  </h2>
+                  <p className="text-[#6B5B4F] text-center mb-8">
+                    Enter your details and I&apos;ll send all 50 ideas straight to your inbox.
+                  </p>
+
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="group">
+                      <label htmlFor="firstName" className="sr-only">First name</label>
+                      <input
+                        id="firstName"
+                        type="text"
+                        name="firstName"
+                        placeholder="Your first name"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        className="w-full px-5 py-4 rounded-xl border-2 border-[#E8E4DF] bg-[#FAFAF8] focus:outline-none focus:border-[#C45D3E] focus:bg-white text-[#1F1F1F] placeholder-[#A89F97] transition-all duration-300"
+                        required
+                      />
+                    </div>
+                    <div className="group">
+                      <label htmlFor="email" className="sr-only">Email address</label>
+                      <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        placeholder="Your email address"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full px-5 py-4 rounded-xl border-2 border-[#E8E4DF] bg-[#FAFAF8] focus:outline-none focus:border-[#C45D3E] focus:bg-white text-[#1F1F1F] placeholder-[#A89F97] transition-all duration-300"
+                        required
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="group w-full bg-[#1F1F1F] hover:bg-[#C45D3E] text-white font-semibold py-4 px-6 rounded-xl text-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-[#C45D3E]/20"
+                    >
+                      <span className="flex items-center justify-center gap-3">
+                        Send Me 50 Ideas
+                        <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </span>
+                    </button>
+                  </form>
+
+                  <p className="text-xs text-[#A89F97] text-center mt-6 flex items-center justify-center gap-2">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                    </svg>
+                    100% free. No spam. Unsubscribe anytime.
+                  </p>
+                </div>
+
+                {/* Trust element */}
+                <p className="text-center text-[#A89F97] text-sm mt-6">
+                  Join 500+ creators who&apos;ve downloaded this guide
+                </p>
               </div>
             </div>
-            <p className="text-gray-600 text-center mb-6">
-              Enter your email and I&apos;ll send you all 50 ideas instantly.
-            </p>
+          </div>
+        </main>
 
-            {/* Placeholder Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <input
-                  type="text"
-                  name="firstName"
-                  placeholder="Your first name"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-900"
-                  required
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-900"
-                  required
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-6 rounded-lg text-lg transition-colors"
-              >
-                Send Me 50 Video Ideas &rarr;
-              </button>
-            </form>
-
-            <p className="text-xs text-gray-500 text-center mt-4">
-              100% free. No spam. Unsubscribe anytime.
-            </p>
+        {/* Categories Section */}
+        <section className="relative py-20 bg-[#2D4A3E]">
+          {/* Decorative corner */}
+          <div className="absolute top-0 left-0 w-32 h-32">
+            <svg viewBox="0 0 100 100" className="w-full h-full text-[#3D5A4E]">
+              <circle cx="0" cy="0" r="80" fill="currentColor" />
+            </svg>
           </div>
 
-          {/* Categories preview */}
-          <div className="mt-8 text-center">
-            <p className="text-white font-medium mb-4">6 categories of ready-to-use ideas:</p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {['Introductions', 'Teaching', 'Experience', 'Reviews', 'Mistakes', 'Q&A'].map((item, i) => (
-                <span key={i} className="bg-white/20 backdrop-blur text-white text-sm px-4 py-2 rounded-full font-medium">
-                  {item}
-                </span>
+          <div className="relative max-w-6xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <span className="inline-flex items-center gap-2 text-[#A8C5B8] text-xs tracking-[0.15em] uppercase font-semibold mb-4">
+                <span className="w-8 h-px bg-[#A8C5B8]"></span>
+                What&apos;s Inside
+                <span className="w-8 h-px bg-[#A8C5B8]"></span>
+              </span>
+              <h2
+                className="font-display text-3xl md:text-4xl font-semibold text-white"
+                style={{ fontVariationSettings: "'opsz' 72" }}
+              >
+                Six Categories of Ready-to-Use Ideas
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {ideaCategories.map((category, index) => (
+                <div
+                  key={index}
+                  className={`group bg-[#3D5A4E] hover:bg-[#4A6B5B] rounded-2xl p-6 transition-all duration-500 cursor-default ${
+                    isHovered === index ? 'scale-[1.02] shadow-xl shadow-black/20' : ''
+                  }`}
+                  onMouseEnter={() => setIsHovered(index)}
+                  onMouseLeave={() => setIsHovered(null)}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <span
+                      className="font-display text-5xl font-bold text-[#A8C5B8]/30"
+                      style={{ fontVariationSettings: "'opsz' 144" }}
+                    >
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <span className="bg-[#C45D3E] text-white text-xs font-semibold px-3 py-1 rounded-full">
+                      {category.ideas} ideas
+                    </span>
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-white mb-2 group-hover:text-[#E8B4A0] transition-colors duration-300">
+                    {category.title}
+                  </h3>
+                  <p className="text-[#A8C5B8] text-sm leading-relaxed">
+                    {category.description}
+                  </p>
+                </div>
               ))}
             </div>
-          </div>
-        </div>
-      </main>
 
-      {/* Categories Breakdown Section */}
-      <section className="relative bg-white/10 backdrop-blur-sm py-12 mt-8">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-white text-center mb-8">
-            What&apos;s Inside
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {ideaCategories.map((category, index) => (
-              <div
-                key={index}
-                className="bg-white/10 backdrop-blur rounded-xl p-5"
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-2xl">{category.icon}</span>
-                  <h3 className="text-white font-bold">{category.title}</h3>
-                </div>
-                <p className="text-orange-100 text-sm mb-2">{category.description}</p>
-                <p className="text-white/70 text-sm">{category.ideas} video ideas</p>
+            {/* Total */}
+            <div className="mt-16 text-center">
+              <div className="inline-flex items-center gap-6 bg-[#3D5A4E] rounded-full px-8 py-4">
+                <span className="font-display text-4xl font-bold text-[#C45D3E]">50</span>
+                <span className="text-[#A8C5B8]">
+                  total ideas — enough for almost a year of weekly uploads
+                </span>
               </div>
-            ))}
+            </div>
           </div>
+        </section>
 
-          {/* Total ideas */}
-          <div className="mt-8 text-center">
-            <p className="text-orange-100">
-              <span className="text-white font-bold text-2xl">50</span> total video ideas —
-              enough content for almost a year of weekly uploads.
-            </p>
+        {/* Why Section */}
+        <section className="relative py-20 bg-[#FDF8F3]">
+          <div className="max-w-3xl mx-auto px-6 text-center">
+            <span className="inline-flex items-center gap-2 text-[#C45D3E] text-xs tracking-[0.15em] uppercase font-semibold mb-4">
+              <span className="w-8 h-px bg-[#C45D3E]"></span>
+              Why This Matters
+              <span className="w-8 h-px bg-[#C45D3E]"></span>
+            </span>
+
+            <h2
+              className="font-display text-3xl md:text-4xl font-semibold text-[#1F1F1F] mb-8"
+              style={{ fontVariationSettings: "'opsz' 72" }}
+            >
+              Stop Wondering What to Make
+            </h2>
+
+            <div className="space-y-6 text-lg text-[#6B5B4F] leading-relaxed">
+              <p>
+                The hardest part of YouTube isn&apos;t recording or editing —
+                it&apos;s figuring out what to make in the first place.
+              </p>
+              <p>
+                You sit down to create, but the ideas won&apos;t come. Or worse,
+                you have ideas but they don&apos;t feel &quot;good enough.&quot;
+              </p>
+              <p className="text-[#1F1F1F] font-medium">
+                This PDF changes that. Just pick an idea, make it yours, and hit record.
+              </p>
+            </div>
+
+            {/* Final CTA */}
+            <div className="mt-12">
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="inline-flex items-center gap-2 text-[#C45D3E] font-semibold hover:gap-4 transition-all duration-300"
+              >
+                Get Your Free Copy
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                </svg>
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Why you need this */}
-      <section className="relative py-12">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-white mb-6">
-            Stop Wondering &quot;What Should I Make?&quot;
-          </h2>
-          <div className="space-y-4 text-orange-100">
-            <p>
-              The hardest part of YouTube isn&apos;t recording or editing —
-              it&apos;s figuring out what to make in the first place.
-            </p>
-            <p>
-              These 50 ideas are specifically designed for creators over 40 who have
-              experience and wisdom to share but don&apos;t know how to package it.
-            </p>
-            <p className="text-white font-medium">
-              Just pick an idea, make it yours, and hit record.
-            </p>
+        {/* Footer */}
+        <footer className="py-8 bg-[#1F1F1F]">
+          <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <span className="text-[#6B5B4F] text-sm">
+              &copy; {new Date().getFullYear()} Thierry Starts YouTube
+            </span>
+            <Link
+              href="/"
+              className="text-[#6B5B4F] hover:text-[#C45D3E] text-sm transition-colors duration-300"
+            >
+              Visit Homepage →
+            </Link>
           </div>
-        </div>
-      </section>
-
-      {/* Simple Footer */}
-      <footer className="relative py-6 bg-orange-900/30">
-        <div className="text-center text-orange-200 text-sm">
-          &copy; {new Date().getFullYear()} Thierry Starts YouTube
-        </div>
-      </footer>
-    </div>
+        </footer>
+      </div>
+    </>
   );
 }
