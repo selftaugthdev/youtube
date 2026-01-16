@@ -41,9 +41,27 @@ export default function VideoIdeasOptinPage() {
   const [firstName, setFirstName] = useState('');
   const [isHovered, setIsHovered] = useState<number | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('This is a placeholder form. Kit.com integration coming soon!');
+
+    // Submit to Kit.com form
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://app.kit.com/forms/8979941/subscriptions', {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors', // Kit.com doesn't allow CORS, so we use no-cors mode
+      });
+
+      // With no-cors, we can't check response status, so assume success
+      alert('Thanks! Check your email for your 50 video ideas.');
+      setEmail('');
+      setFirstName('');
+    } catch (error) {
+      alert('Something went wrong. Please try again.');
+    }
   };
 
   return (
@@ -233,7 +251,7 @@ export default function VideoIdeasOptinPage() {
                       <input
                         id="firstName"
                         type="text"
-                        name="firstName"
+                        name="fields[first_name]"
                         placeholder="Your first name"
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
@@ -246,7 +264,7 @@ export default function VideoIdeasOptinPage() {
                       <input
                         id="email"
                         type="email"
-                        name="email"
+                        name="email_address"
                         placeholder="Your email address"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
